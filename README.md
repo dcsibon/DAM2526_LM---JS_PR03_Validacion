@@ -177,8 +177,6 @@ button {
 
 A continuación se explican **conceptos nuevos** que necesitarás para poder resolver esta práctica.
 
----
-
 ### 1️⃣ `event.preventDefault()`
 
 #### ¿Para qué sirve?
@@ -239,8 +237,6 @@ form.submit();
 
    * JavaScript envía el formulario
 
----
-
 ### 2️⃣ `.className`
 
 #### ¿Para qué sirve?
@@ -269,8 +265,6 @@ En la práctica se usa para:
 * mostrar mensajes de error o éxito
 * cambiar el aspecto según lo que ocurra
 
----
-
 #### Ejemplo sencillo
 
 ```js
@@ -280,8 +274,6 @@ mensaje.className = "mensajes err";
 Significa:
 
 > “A este elemento aplícale estas clases CSS”.
-
----
 
 ## 3️⃣ `.trim()`
 
@@ -306,8 +298,6 @@ Sirve para:
 
 * evitar que el usuario “engañe” al programa escribiendo solo espacios
 * validar correctamente campos de texto
-
----
 
 ### 4️⃣ `indexOf()`
 
@@ -338,8 +328,6 @@ Ejemplo:
 "hola".indexOf("@"); // -1
 ```
 
----
-
 ### 5️⃣ `lastIndexOf()`
 
 #### ¿Para qué sirve?
@@ -365,8 +353,6 @@ Sirve para:
 * encontrar el último punto de un email
 * comprobar que está después de la `@`
 
----
-
 ### 6️⃣ `.length`
 
 #### ¿Para qué sirve?
@@ -385,8 +371,6 @@ En formularios se usa para:
 * validar contraseñas
 * evitar textos demasiado cortos
 
----
-
 ### 🧠 Resumen
 
 | Elemento                 | Para qué sirve                             |
@@ -400,3 +384,41 @@ En formularios se usa para:
 | `.length`                | Saber cuántos caracteres tiene un texto    |
 
 ---
+
+### Curiosidades del HTML sobre la ACCESIBILIDAD
+
+#### ¿Qué es `aria-live`?
+
+`aria-live` es un **atributo de accesibilidad** (ARIA) que se usa para indicar a los **lectores de pantalla** que el contenido de un elemento puede **cambiar dinámicamente**.
+
+Sirve para que personas con discapacidad visual sepan que **ha aparecido un nuevo mensaje**, aunque no se haya recargado la página.
+
+#### ¿Qué significa `aria-live="polite"`?
+
+```html
+<section id="mensajes" aria-live="polite"></section>
+```
+
+Significa:
+
+> “Cuando el contenido de este elemento cambie,
+> avisa al lector de pantalla **de forma educada**,
+> **sin interrumpir** lo que el usuario esté escuchando.”
+
+Es decir:
+
+* el lector de pantalla **espera** a terminar la frase actual
+* luego lee el nuevo contenido
+
+#### Diferencia entre `polite` y `assertive`
+
+| Valor       | Comportamiento                                                                |
+| ----------- | ----------------------------------------------------------------------------- |
+| `polite`    | Lee el cambio cuando puede (recomendado para mensajes informativos)           |
+| `assertive` | Interrumpe inmediatamente lo que se esté leyendo (solo para errores críticos) |
+
+En un formulario:
+
+* mensajes de error → `polite` es lo correcto
+* alertas graves → `assertive` (muy pocas veces)
+
